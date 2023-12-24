@@ -12,7 +12,7 @@ from pycoral.utils.edgetpu import make_interpreter
 from pycoral.utils.edgetpu import run_inference
 import logging
 import collections
-from primitive import Target, Object, Context
+from source.primitive import Target, Object, Context
 
 logger = logging.getLogger(__name__)
 

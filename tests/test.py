@@ -1,6 +1,6 @@
-from car import Camera, Car, CameraServo, FrontWheels, BackWheels
-from vision import ODConfig, ObjectDetection, find_target
-from primitive import FrameSize, Object, BBox, Target, Context
+from source.car import Camera, Car, CameraServo, FrontWheels, BackWheels
+from source.vision import ODConfig, ObjectDetection, find_target
+from source.primitive import FrameSize, Object, BBox, Target, Context
 import unittest
 import time
 import numpy as np
