@@ -1,0 +1,24 @@
+#!/bin/bash
+# steps to install coral edge TPU on resparypie with python3.9
+
+echo "make sure python version = 3.9"
+python --version
+
+echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+sudo apt-get update
+
+sudo apt-get install libedgetpu1-std
+# use this for max operating freq
+# sudo apt-get install libedgetpu1-max
+
+pip install tensorflow keras
+
+# platform specific package found from https://github.com/google-coral/pycoral/releases/
+echo "install tflite runtime:"
+pip install tflite_runtime-2.5.0.post1-cp39-cp39-linux_aarch64.whl 
+
+echo "install pycoral:"
+pip install pycoral-2.0.0-cp39-cp39-linux_aarch64.whl 
