@@ -68,8 +68,7 @@ class CameraServo:
         self._pan_servo.setup()
         self._tilt_servo.setup()
         # Log initial angels.
-        self._pan_angle = 90
-        self._tilt_angle = 90
+        self.reset()
 
     def regularize(self, angle: int) -> int:
         if angle > 180:
@@ -129,7 +128,7 @@ class Camera:
         # Kp = 0.6 * Kpu = 0.0228
         # Ki = 0.5 * Tu = 0.0122
         # Kd = 0.125 * Tu = 0.0031
-        kp, ki, kd = 0.038, 0.0002, 0.002
+        kp, ki, kd = 0.0228, 0.002, 0.000
         self._pan_control = Controller(kp, ki, kd)
         self._tilt_control = Controller(kp, ki, kd)
 
@@ -340,8 +339,8 @@ class Car:
                     img = plot_targets(frame, context.target,
                                        self.cortex.object_detection.labels)
                 context = camera.follow_target(context)
-                context = back_wheels.follow_target(context, goal_ratio=0.3)
-                context = front_wheels.follow_target(context)
+                #context = back_wheels.follow_target(context, goal_ratio=0.3)
+                #context = front_wheels.follow_target(context)
                 # time.sleep(0.001)
         except Exception as e:
             logger.warning(f'{e}')
